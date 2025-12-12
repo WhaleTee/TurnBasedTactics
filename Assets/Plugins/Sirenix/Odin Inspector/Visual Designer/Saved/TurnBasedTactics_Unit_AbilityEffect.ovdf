@@ -1,0 +1,6 @@
+OVDF v1.0
+TurnBasedTactics.Unit.AbilityEffect, Assembly-CSharp
+
+# $self
++ [Sirenix.OdinInspector.ListDrawerSettingsAttribute]
+	AlwaysAddDefaultValue = True
