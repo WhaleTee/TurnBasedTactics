@@ -118,3 +118,6 @@ InitTestScene*.unity*
 # PrimeTween
 # Ignore Demo files
 /[Aa]ssets/Plugins/PrimeTween/Demo/*
+
+# HotReload
+/[Aa]ssets/Packages/com.singularitygroup.hotreload
