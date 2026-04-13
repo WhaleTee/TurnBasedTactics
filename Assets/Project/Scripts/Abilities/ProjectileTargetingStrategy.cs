@@ -11,11 +11,21 @@ using ZLinq;
 
 namespace TurnBasedTactics.Abilities.Targeting {
   public class ProjectileTargetingStrategy : TargetingStrategy {
-    [Inject] UserInput userInput;
-    [Inject] SquadData squad;
-    [Inject] HexGridNavigationService navigationService;
-    [Inject] GroundTilemapToWorldPositionService tilemapToWorldService;
-    [Inject] NavigationTilemapContainer navigationTilemap;
+    [Inject]
+    UserInput userInput;
+
+    [Inject]
+    SquadData squad;
+
+    [Inject]
+    HexGridNavigationService navigationService;
+
+    [Inject]
+    GroundTilemapToWorldPositionService tilemapToWorldService;
+
+    [Inject]
+    NavigationTilemapContainer navigationTilemap;
+
     GameObject target;
     IDisposable subscription;
 

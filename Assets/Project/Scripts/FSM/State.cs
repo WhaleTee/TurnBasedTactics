@@ -21,7 +21,9 @@ namespace WhaleTee.FSM {
       return transition != null;
     }
 
-    protected virtual Type GetTransition() => null;
+    protected virtual Type GetTransition() {
+      return null;
+    }
 
     protected virtual void OnEnter() { }
 
@@ -40,15 +42,20 @@ namespace WhaleTee.FSM {
 
     public void Update() {
       if (CheckTransition()) return;
+
       if (firstUpdate) {
         firstUpdate = false;
         OnFirstUpdate();
       } else OnUpdate();
     }
 
-    public void FixedUpdate() => OnFixedUpdate();
+    public void FixedUpdate() {
+      OnFixedUpdate();
+    }
 
-    public void Exit() => OnExit();
+    public void Exit() {
+      OnExit();
+    }
   }
 
   [Flags]

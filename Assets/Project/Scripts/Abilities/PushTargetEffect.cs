@@ -20,13 +20,14 @@ namespace TurnBasedTactics.Abilities {
       var target = effectTarget as UnitBehaviour;
       var caster = ability.owner.GetComponent<UnitBehaviour>();
       if (target == null || caster == null) return;
+
       var casterCellPosition = caster.SquadUnit.state.position.cellPosition;
       var targetCellPosition = target.SquadUnit.state.position.cellPosition;
 
       if (casterCellPosition - targetCellPosition == Vector3Int.zero) return;
 
       var pushPosition = GetPushPosition(casterCellPosition, targetCellPosition, pushForce);
-      
+
       unitMovementService.SetPosition(target.SquadUnit, tilemapToWorldService.GetWorldPosition(pushPosition));
       onCompleted?.Invoke(this);
     }

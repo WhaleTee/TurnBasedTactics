@@ -8,7 +8,9 @@ namespace TurnBasedTactics.Unit {
   [Serializable]
   public class SquadUnit {
     public UnitConfiguration configuration;
-    [HideInInspector] public UnitState state;
+
+    [HideInInspector]
+    public UnitState state;
 
     public void InjectDependencies() {
       foreach (var ability in state.abilities) {

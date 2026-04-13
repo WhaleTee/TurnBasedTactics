@@ -11,8 +11,12 @@ using WhaleTee.FSM;
 using WhaleTee.TurnBasedTactics.DI;
 
 public sealed class GameInitializationState : State {
-  [Inject] IPrefabAsyncFactory<GameObject> factory;
-  [Inject] MainMenuUIContainer mainMenuUI;
+  [Inject]
+  IPrefabAsyncFactory<GameObject> factory;
+
+  [Inject]
+  MainMenuUIContainer mainMenuUI;
+
   bool initialized;
 
   public GameInitializationState() {

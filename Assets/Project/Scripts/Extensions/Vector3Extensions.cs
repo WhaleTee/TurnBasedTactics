@@ -56,7 +56,9 @@ namespace WhaleTee.Extensions {
       return (camera.WorldToScreenPoint(position + worldDirection) - camera.WorldToScreenPoint(position)).normalized;
     }
 
-    public static Vector2 AsVector2(this Vector3 point) => new(point.x, point.y);
+    public static Vector2 AsVector2(this Vector3 point) {
+      return new Vector2(point.x, point.y);
+    }
 
     public static bool Approximately(this Vector3 vector, Vector3 other, float tolerance) {
       return Mathf.Abs(vector.x - other.x) <= tolerance && Mathf.Abs(vector.y - other.y) <= tolerance && Mathf.Abs(vector.z - other.z) <= tolerance;

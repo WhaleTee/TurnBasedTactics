@@ -10,7 +10,9 @@ using ZLinq;
 
 namespace WhaleTee.Input {
   public sealed class PointerOverGameObjectTracker : IPointerOverTracker<GameObject>, IDisposable {
-    [Inject] readonly UserInput userInput;
+    [Inject]
+    readonly UserInput userInput;
+
     readonly HashSet<GameObject> trackingGameObjects;
     readonly List<RaycastResult> raycastResults;
     readonly PointerEventData pointerEventData;
@@ -27,7 +29,9 @@ namespace WhaleTee.Input {
       subscriptions = userInput.PointerPosition.Subscribe(_ => pointerOverGameObject = null);
     }
 
-    static bool IsGameObjectEnabled(GameObject gameObject) => gameObject.activeSelf && gameObject.activeInHierarchy;
+    static bool IsGameObjectEnabled(GameObject gameObject) {
+      return gameObject.activeSelf && gameObject.activeInHierarchy;
+    }
 
     bool IsPointerOverGameObject() {
       if (userInput == null) return false;
@@ -46,14 +50,24 @@ namespace WhaleTee.Input {
       return pointerOverGameObject.OrNull() != null;
     }
 
-    public void Track(GameObject element) => trackingGameObjects.Add(element);
-    
-    public void Untrack(GameObject element) => trackingGameObjects.Remove(element);
+    public void Track(GameObject element) {
+      trackingGameObjects.Add(element);
+    }
 
-    public bool IsTracked(GameObject element) => trackingGameObjects.Contains(element);
-    
-    public bool IsPointerOverUI() => IsPointerOverGameObject();
+    public void Untrack(GameObject element) {
+      trackingGameObjects.Remove(element);
+    }
 
-    public void Dispose() => subscriptions?.Dispose();
+    public bool IsTracked(GameObject element) {
+      return trackingGameObjects.Contains(element);
+    }
+
+    public bool IsPointerOverUI() {
+      return IsPointerOverGameObject();
+    }
+
+    public void Dispose() {
+      subscriptions?.Dispose();
+    }
   }
 }

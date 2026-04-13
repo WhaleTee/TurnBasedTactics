@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: d82d000a02d7047418a137c431352b5a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5198224221977688948
+    second: Hex - Sparse Trees (lush) 2_0
+  - first:
+      213: 2849286722565224761
+    second: Hex - Sparse Trees (lush) 2_1
+  - first:
+      213: 7614579652457318796
+    second: Hex - Sparse Trees (lush) 2_2
+  - first:
+      213: -3697355643373804937
+    second: Hex - Sparse Trees (lush) 2_3
+  - first:
+      213: 8603028544440960321
+    second: Hex - Sparse Trees (lush) 2_4
+  - first:
+      213: 6613626281110854933
+    second: Hex - Sparse Trees (lush) 2_5
+  - first:
+      213: 735273790505031480
+    second: Hex - Sparse Trees (lush) 2_6
+  - first:
+      213: -1395874264088058413
+    second: Hex - Sparse Trees (lush) 2_7
+  - first:
+      213: -3884609130218509033
+    second: Hex - Sparse Trees (lush) 2_8
+  - first:
+      213: -6384995551990542868
+    second: Hex - Sparse Trees (lush) 2_9
+  - first:
+      213: -4807860270974558676
+    second: Hex - Sparse Trees (lush) 2_10
+  - first:
+      213: -2427096314877091206
+    second: Hex - Sparse Trees (lush) 2_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 233
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Hex - Sparse Trees (lush) 2_0
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 55
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c84403a8c923cd7b0800000000000000
+      internalID: -5198224221977688948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex - Sparse Trees (lush) 2_1
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 308
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 939bcb19d23ba8720800000000000000
+      internalID: 2849286722565224761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex - Sparse Trees (lush) 2_2
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 242
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c89c2a2a9db6ca960800000000000000
+      internalID: 7614579652457318796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex - Sparse Trees (lush) 2_3
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 231
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7722b6cb1aa50bcc0800000000000000
+      internalID: -3697355643373804937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex - Sparse Trees (lush) 2_4
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 216
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14503ff51e8146770800000000000000
+      internalID: 8603028544440960321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex - Sparse Trees (lush) 2_5
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 168
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51ddccaef0258cb50800000000000000
+      internalID: 6613626281110854933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex - Sparse Trees (lush) 2_6
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 173
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83715b7ed97343a00800000000000000
+      internalID: 735273790505031480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex - Sparse Trees (lush) 2_7
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 160
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d5ebe1a0cbd0ace0800000000000000
+      internalID: -1395874264088058413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex - Sparse Trees (lush) 2_8
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 147
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71d261ed398171ac0800000000000000
+      internalID: -3884609130218509033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex - Sparse Trees (lush) 2_9
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 140
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ced8727ef50f367a0800000000000000
+      internalID: -6384995551990542868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex - Sparse Trees (lush) 2_10
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 132
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2e19d28e8c074db0800000000000000
+      internalID: -4807860270974558676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex - Sparse Trees (lush) 2_11
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 73
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a72671cc2c8315ed0800000000000000
+      internalID: -2427096314877091206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Hex - Sparse Trees (lush) 2_0: -5198224221977688948
+      Hex - Sparse Trees (lush) 2_1: 2849286722565224761
+      Hex - Sparse Trees (lush) 2_10: -4807860270974558676
+      Hex - Sparse Trees (lush) 2_11: -2427096314877091206
+      Hex - Sparse Trees (lush) 2_2: 7614579652457318796
+      Hex - Sparse Trees (lush) 2_3: -3697355643373804937
+      Hex - Sparse Trees (lush) 2_4: 8603028544440960321
+      Hex - Sparse Trees (lush) 2_5: 6613626281110854933
+      Hex - Sparse Trees (lush) 2_6: 735273790505031480
+      Hex - Sparse Trees (lush) 2_7: -1395874264088058413
+      Hex - Sparse Trees (lush) 2_8: -3884609130218509033
+      Hex - Sparse Trees (lush) 2_9: -6384995551990542868
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

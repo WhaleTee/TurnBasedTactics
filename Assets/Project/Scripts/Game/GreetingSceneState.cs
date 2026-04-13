@@ -2,7 +2,8 @@
 using WhaleTee.FSM;
 
 public class GreetingSceneState : State {
-  [Inject] SceneService sceneService;
+  [Inject]
+  SceneService sceneService;
 
   protected override void OnEnter() { }
 }

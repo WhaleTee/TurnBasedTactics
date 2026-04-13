@@ -9,7 +9,9 @@ using UnityEngine.Tilemaps;
 
 namespace WhaleTee.Grid {
   public class UnitDeployPositionsVisualization : IDisposable {
-    [Inject] NavigationTilemapContainer navigationTilemapContainer;
+    [Inject]
+    NavigationTilemapContainer navigationTilemapContainer;
+
     IDisposable subscriptions;
     CancellationTokenSource cts;
 

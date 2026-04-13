@@ -15,7 +15,9 @@ namespace WhaleTee.FSM {
       return ctx.state == typeof(T) && ctx.lifecycleState == (byte)lifecycle;
     }
 
-    protected CancellationToken GetToken() => StateObserverTokenSource.Token;
+    protected CancellationToken GetToken() {
+      return StateObserverTokenSource.Token;
+    }
 
     protected void OnEnter() { }
     protected void OnUpdate() { }

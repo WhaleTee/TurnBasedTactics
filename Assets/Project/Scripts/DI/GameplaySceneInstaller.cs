@@ -8,20 +8,31 @@ using WhaleTee.Grid;
 
 namespace WhaleTee.TurnBasedTactics.DI {
   public class GameplaySceneInstaller : MonoBehaviour, IInstaller {
-    [SerializeField] Tilemap tilemap;
-    [SerializeField] NavigationTilemapContainer navigationTilemapContainer;
-    [SerializeField] MainMenuUIContainer mainMenuUI;
-    [SerializeField] SquadSO squad;
+    [SerializeField]
+    Tilemap tilemap;
+
+    [SerializeField]
+    NavigationTilemapContainer navigationTilemapContainer;
+
+    [SerializeField]
+    MainMenuUIContainer mainMenuUI;
+
+    [SerializeField]
+    SquadSO squad;
 
     Container container;
 
-    void Awake() => Initialize(container);
+    void Awake() {
+      Initialize(container);
+    }
 
     void Initialize(Container container) {
       foreach (var initializable in container.All<IInitializable>()) initializable.Initialize();
     }
 
-    void OnContainerBuilt(Container container) => this.container = container;
+    void OnContainerBuilt(Container container) {
+      this.container = container;
+    }
 
     void InstallServices(ContainerBuilder containerBuilder) {
       containerBuilder.AddSingleton(mainMenuUI, typeof(MainMenuUIContainer), typeof(IInitializable));

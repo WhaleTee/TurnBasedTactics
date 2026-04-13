@@ -9,7 +9,7 @@ namespace WhaleTee.Timers {
     CancellationToken token;
 
     CancellationTokenSource IStateObserver<GameplayState>.StateObserverTokenSource { get; } = new();
-    
+
     async UniTaskVoid RunTimers() {
       cts?.Cancel();
       cts = new CancellationTokenSource();
@@ -21,9 +21,13 @@ namespace WhaleTee.Timers {
       }
     }
 
-    void IStateObserver<GameplayState>.OnEnter() => UniTask.Void(RunTimers);
+    void IStateObserver<GameplayState>.OnEnter() {
+      UniTask.Void(RunTimers);
+    }
 
-    void IStateObserver<GameplayState>.OnExit() => cts.Cancel();
+    void IStateObserver<GameplayState>.OnExit() {
+      cts.Cancel();
+    }
 
     public void Dispose() {
       cts?.Cancel();

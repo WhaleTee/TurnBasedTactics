@@ -8,7 +8,9 @@ using UnityEngine.SceneManagement;
 using WhaleTee.FSM;
 
 public sealed class MenuState : State {
-  [Inject] MainMenuUIContainer mainMenuUI;
+  [Inject]
+  MainMenuUIContainer mainMenuUI;
+
   bool startClicked;
 
   public MenuState() {

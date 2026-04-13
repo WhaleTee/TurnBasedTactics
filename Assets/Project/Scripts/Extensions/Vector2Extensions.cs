@@ -17,7 +17,7 @@ namespace WhaleTee.Extensions {
     public static bool Approximately(this Vector2 vector, Vector2 other) {
       return Mathf.Approximately(vector.x, other.x) && Mathf.Approximately(vector.y, other.y);
     }
-    
+
     public static Vector2 With(this Vector2 vector, float? x = null, float? y = null) {
       return new Vector2(x ?? vector.x, y ?? vector.y);
     }

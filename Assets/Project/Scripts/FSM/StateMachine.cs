@@ -15,10 +15,14 @@ namespace WhaleTee.FSM {
     State current;
 
     public event Action<Type, Type> stateChangedEvent = delegate { };
-    [Inject] readonly IPublisher<StateLifecycleChangedEvent> stateLifecycleEnteredEventPublisher;
 
-    StateMachine() => stateTransitionAction = new StateTransitionAction(OnStateTransition);
-    
+    [Inject]
+    readonly IPublisher<StateLifecycleChangedEvent> stateLifecycleEnteredEventPublisher;
+
+    StateMachine() {
+      stateTransitionAction = new StateTransitionAction(OnStateTransition);
+    }
+
     void OnStateTransition(Type stateType) {
       if (states.TryGetValue(stateType, out var state)) {
         var oldState = current;

@@ -11,10 +11,12 @@ namespace WhaleTee.Factory {
       return go;
     }
 
-    GameObject CreateDeactivated(GameObject prefab) => CreateDeactivated(prefab, () => Create(new PrefabContext { prefab = prefab }));
+    GameObject CreateDeactivated(GameObject prefab) {
+      return CreateDeactivated(prefab, () => Create(new PrefabContext { prefab = prefab }));
+    }
 
     GameObject CreateDeactivated(GameObject prefab, Vector3 position, Quaternion rotation) {
-      return CreateDeactivated(prefab, () => Create(new PrefabContext { prefab = prefab, position = position, rotation = rotation}));
+      return CreateDeactivated(prefab, () => Create(new PrefabContext { prefab = prefab, position = position, rotation = rotation }));
     }
 
     GameObject CreateDeactivated(GameObject prefab, Transform parent, Quaternion rotation) {

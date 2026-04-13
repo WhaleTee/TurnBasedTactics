@@ -10,6 +10,7 @@ namespace TurnBasedTactics.Abilities {
   public class Ability {
     [Header("FX")]
     public AudioClip castSfx;
+
     public GameObject castVfx;
     public GameObject targetVfx;
 
@@ -23,9 +24,12 @@ namespace TurnBasedTactics.Abilities {
 
     [SerializeReference]
     public IAbilityRule rule;
-    
-    [HideInInspector] public GameObject owner;
-    [Inject] TargetingManager targetingManager;
+
+    [HideInInspector]
+    public GameObject owner;
+
+    [Inject]
+    TargetingManager targetingManager;
 
     public void Target() {
       targetingManager.SetCurrentStrategy(targetingStrategy);
@@ -36,6 +40,7 @@ namespace TurnBasedTactics.Abilities {
       targetingStrategy.Cancel();
       targetingManager.ClearCurrentStrategy();
       if (target == null) return;
+
       foreach (var effect in effects) effect.Create().Apply(this, target);
     }
   }

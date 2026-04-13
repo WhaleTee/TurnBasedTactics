@@ -9,12 +9,30 @@ using WhaleTee.Extensions;
 using ZLinq;
 
 public class MainMenuUI : MonoBehaviour {
-  [SerializeField] [Range(0, 5)] float menuAppearanceDelay;
-  [SerializeField] [Range(0, 1)] float buttonAppearanceDelay;
-  [SerializeField] [Range(0, 1)] float buttonFadeDelay;
-  [SerializeField] [Range(0, 1)] float backgroundAppearanceDelay;
-  [SerializeField] [Range(0, 1)] float labelShowTime;
-  [SerializeField] [Range(0, 1)] float newGamePanelShowTime;
+  [SerializeField]
+  [Range(0, 5)]
+  float menuAppearanceDelay;
+
+  [SerializeField]
+  [Range(0, 1)]
+  float buttonAppearanceDelay;
+
+  [SerializeField]
+  [Range(0, 1)]
+  float buttonFadeDelay;
+
+  [SerializeField]
+  [Range(0, 1)]
+  float backgroundAppearanceDelay;
+
+  [SerializeField]
+  [Range(0, 1)]
+  float labelShowTime;
+
+  [SerializeField]
+  [Range(0, 1)]
+  float newGamePanelShowTime;
+
   UIDocument document;
   VisualElement root;
   VisualElement background;

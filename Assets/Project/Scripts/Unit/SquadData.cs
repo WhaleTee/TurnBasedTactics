@@ -16,7 +16,7 @@ namespace TurnBasedTactics.Unit {
       for (var i = 0; i < newArray.Length; i++) newArray[i] = SerializationUtility.CreateCopy(array[i]) as T;
       return newArray;
     }
-    
+
     public object Clone() {
       return new SquadData {
         firstUnit =

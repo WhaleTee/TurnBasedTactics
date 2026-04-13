@@ -5,10 +5,7 @@ using System.Linq;
 namespace WhaleTee.Assemblies {
   public static class PredefinedAssemblyTypeFinder {
     enum AssemblyType {
-      AssemblyCSharp,
-      AssemblyCSharpEditor,
-      AssemblyCSharpEditorFirstPass,
-      AssemblyCSharpFirstPass
+      AssemblyCSharp, AssemblyCSharpEditor, AssemblyCSharpEditorFirstPass, AssemblyCSharpFirstPass
     }
 
     static AssemblyType? GetAssemblyType(string assemblyName) {
@@ -24,9 +21,7 @@ namespace WhaleTee.Assemblies {
     static void AddTypesFromAssemblyByInterface(IEnumerable<Type> assemblyTypes, Type interfaceType, IList<Type> results) {
       var types = AddTypesFromAssemblyByPredicate(assemblyTypes, type => type != interfaceType && interfaceType.IsAssignableFrom(type));
 
-      foreach (var type in types) {
-        results.Add(type);
-      }
+      foreach (var type in types) results.Add(type);
     }
 
     static void AddTypesFromAssemblyByAttributes(IEnumerable<Type> assemblyTypes, IEnumerable<Type> attributes, IList<Type> results) {
@@ -35,9 +30,7 @@ namespace WhaleTee.Assemblies {
         type => attributes.Any(attribute => type.GetCustomAttributes(attribute, true).Length > 0)
       );
 
-      foreach (var type in types) {
-        results.Add(type);
-      }
+      foreach (var type in types) results.Add(type);
     }
 
     static IEnumerable<Type> AddTypesFromAssemblyByPredicate(IEnumerable<Type> assemblyTypes, Predicate<Type> predicate) {
@@ -53,9 +46,7 @@ namespace WhaleTee.Assemblies {
       foreach (var assembly in assemblies) {
         var assemblyType = GetAssemblyType(assembly.GetName().Name);
 
-        if (assemblyType != null) {
-          assemblyTypes.Add((AssemblyType)assemblyType, assembly.GetTypes());
-        }
+        if (assemblyType != null) assemblyTypes.Add((AssemblyType)assemblyType, assembly.GetTypes());
       }
 
       assemblyTypes.TryGetValue(AssemblyType.AssemblyCSharp, out var assemblyCSharpTypes);
@@ -76,9 +67,7 @@ namespace WhaleTee.Assemblies {
       foreach (var assembly in assemblies) {
         var assemblyType = GetAssemblyType(assembly.GetName().Name);
 
-        if (assemblyType != null) {
-          assemblyTypes.Add((AssemblyType)assemblyType, assembly.GetTypes());
-        }
+        if (assemblyType != null) assemblyTypes.Add((AssemblyType)assemblyType, assembly.GetTypes());
       }
 
       assemblyTypes.TryGetValue(AssemblyType.AssemblyCSharp, out var assemblyCSharpTypes);
@@ -99,9 +88,7 @@ namespace WhaleTee.Assemblies {
       foreach (var assembly in assemblies) {
         var assemblyType = GetAssemblyType(assembly.GetName().Name);
 
-        if (assemblyType != null) {
-          assemblyTypes.Add((AssemblyType)assemblyType, assembly.GetTypes());
-        }
+        if (assemblyType != null) assemblyTypes.Add((AssemblyType)assemblyType, assembly.GetTypes());
       }
 
       var attributeList = new List<Type> { attribute };
@@ -111,7 +98,7 @@ namespace WhaleTee.Assemblies {
 
       assemblyTypes.TryGetValue(AssemblyType.AssemblyCSharpFirstPass, out var assemblyCSharpFirstPassTypes);
       AddTypesFromAssemblyByAttributes(assemblyCSharpFirstPassTypes, attributeList, types);
-      
+
       return types;
     }
   }

@@ -7,7 +7,8 @@ using PrimeTween;
 
 namespace WhaleTee.Grid {
   public class UnitHexGridMovementService {
-    [Inject] GroundTilemapToWorldPositionService tilemapToWorldPositionService;
+    [Inject]
+    GroundTilemapToWorldPositionService tilemapToWorldPositionService;
 
     public void SetPosition(SquadUnit unit, Vector2 position) {
       var newPosition = position + unit.configuration.position.cellOffset;

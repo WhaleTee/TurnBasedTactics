@@ -4,7 +4,10 @@ using Reflex.Attributes;
 
 public abstract class LoadSceneState : ParametrizedState<string> {
   readonly Type nextState;
-  [Inject] SceneService sceneService;
+
+  [Inject]
+  SceneService sceneService;
+
   bool isLoadingDone;
 
   protected LoadSceneState(string parameter, Type nextState) : base(parameter) {

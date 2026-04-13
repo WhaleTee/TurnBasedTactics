@@ -58,13 +58,27 @@ public sealed class EnemyEmergeState : State {
 }
 
 public sealed class SquadDeploymentState : State {
-  [Inject] UserInput userInput;
-  [Inject] HexGridNavigationService navigationService;
-  [Inject] NavigationTilemapContainer navigationTilemapContainer;
-  [Inject] GroundTilemapToWorldPositionService toWorldPositionService;
-  [Inject] SquadData squad;
-  [Inject] UnitSpawnService unitSpawnService;
-  [Inject] UnitHexGridMovementService hexGridMovementService;
+  [Inject]
+  UserInput userInput;
+
+  [Inject]
+  HexGridNavigationService navigationService;
+
+  [Inject]
+  NavigationTilemapContainer navigationTilemapContainer;
+
+  [Inject]
+  GroundTilemapToWorldPositionService toWorldPositionService;
+
+  [Inject]
+  SquadData squad;
+
+  [Inject]
+  UnitSpawnService unitSpawnService;
+
+  [Inject]
+  UnitHexGridMovementService hexGridMovementService;
+
   UnitDeployPositionsVisualization unitDeployVisualization;
   readonly ObservableDictionary<int, HashSet<Vector3Int>> reachablePositions = new();
   readonly Vector3Int[] squadDeployPositions = new Vector3Int[3];
@@ -81,7 +95,7 @@ public sealed class SquadDeploymentState : State {
 
   protected override void OnEnter() {
     for (var i = 0; i < squadDeployPositions.Length; i++) squadDeployPositions[i] = squad.deployInitialPoint;
-    
+
     unitDeployVisualization = new UnitDeployPositionsVisualization(reachablePositions).InjectAttributes();
 
     var bag = Disposable.CreateBuilder();
@@ -126,7 +140,11 @@ public sealed class SquadDeploymentState : State {
 
                           if (cellPosition != deployCell) {
                             deployCell = cellPosition;
-                            hexGridMovementService.SetPosition(deployUnit, toWorldPositionService.GetWorldPosition(cellPosition) + deployUnit.configuration.position.deployCellOffset);
+
+                            hexGridMovementService.SetPosition(
+                              deployUnit,
+                              toWorldPositionService.GetWorldPosition(cellPosition) + deployUnit.configuration.position.deployCellOffset
+                            );
                           }
                         }
              )

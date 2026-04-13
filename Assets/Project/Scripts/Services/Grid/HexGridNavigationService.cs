@@ -7,7 +7,9 @@ using ZLinq;
 
 namespace WhaleTee.Grid {
   public class HexGridNavigationService {
-    [Inject] readonly ISubscriber<CellPlacedEventMessage> subscriber;
+    [Inject]
+    readonly ISubscriber<CellPlacedEventMessage> subscriber;
+
     readonly HashSet<Vector3Int> blockedCells = new();
     readonly Dictionary<Vector3Int, int> cellsCosts = new();
 
@@ -41,9 +43,13 @@ namespace WhaleTee.Grid {
              .ToArray();
     }
 
-    static float Heuristic(Vector3Int from, Vector3Int to) => (from - to).magnitude;
+    static float Heuristic(Vector3Int from, Vector3Int to) {
+      return (from - to).magnitude;
+    }
 
-    static bool IsEven(int value) => (value & 1) == 0;
+    static bool IsEven(int value) {
+      return (value & 1) == 0;
+    }
 
     void SubscribeEvents() {
       subscriber.Subscribe(OnCellPlaced);
@@ -141,7 +147,9 @@ namespace WhaleTee.Grid {
 
       return result;
     }
-    
-    public bool IsCellBlocked(Vector3Int cell) => blockedCells.Contains(cell);
+
+    public bool IsCellBlocked(Vector3Int cell) {
+      return blockedCells.Contains(cell);
+    }
   }
 }

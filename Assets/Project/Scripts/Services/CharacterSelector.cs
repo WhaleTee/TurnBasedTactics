@@ -10,19 +10,28 @@ using WhaleTee.Reactive.Input;
 
 namespace TurnBasedTactics.Gameplay {
   public class CharacterSelector : IStateObserver<GameplayState> {
-    [Inject] UserInput userInput;
-    [Inject] IPublisher<CharacterSelectedEventMessage> characterSelectedPublisher;
+    [Inject]
+    UserInput userInput;
+
+    [Inject]
+    IPublisher<CharacterSelectedEventMessage> characterSelectedPublisher;
+
     readonly LayerMask characterLayerMask = LayerMask.GetMask("Character");
     IDisposable leftClickSubscription;
 
     CancellationTokenSource IStateObserver<GameplayState>.StateObserverTokenSource { get; } = new();
 
-    void IStateObserver<GameplayState>.OnEnter() => leftClickSubscription = userInput.LeftClick.Subscribe(HandleLeftClick);
+    void IStateObserver<GameplayState>.OnEnter() {
+      leftClickSubscription = userInput.LeftClick.Subscribe(HandleLeftClick);
+    }
 
-    void IStateObserver<GameplayState>.OnExit() => leftClickSubscription?.Dispose();
+    void IStateObserver<GameplayState>.OnExit() {
+      leftClickSubscription?.Dispose();
+    }
 
     void HandleLeftClick(bool click) {
       if (!click) return;
+
       var pointerPosition = userInput.GetPointerPositionWorld();
 
       characterSelectedPublisher.Publish(

@@ -20,11 +20,20 @@ using ZLinq;
 
 namespace WhaleTee.Grid {
   public class UnitMovementService : IDisposable {
-    [Inject] ISubscriber<CharacterSelectedEventMessage> characterSelectedSubscriber;
-    [Inject] UserInput userInput;
-    [Inject] GroundTilemapToWorldPositionService tilemapToWorldPositionService;
-    [Inject] HexGridNavigationService hexGridNavigationService;
-    [Inject] UnitHexGridMovementService unitHexGridMovementService;
+    [Inject]
+    ISubscriber<CharacterSelectedEventMessage> characterSelectedSubscriber;
+
+    [Inject]
+    UserInput userInput;
+
+    [Inject]
+    GroundTilemapToWorldPositionService tilemapToWorldPositionService;
+
+    [Inject]
+    HexGridNavigationService hexGridNavigationService;
+
+    [Inject]
+    UnitHexGridMovementService unitHexGridMovementService;
 
     public ObservableDictionary<int, HashSet<Vector3Int>> ReachablePositions { get; } = new();
     public ObservableList<Vector3Int> LastPath { get; } = new();

@@ -11,14 +11,22 @@ using WhaleTee.Factory.Context;
 
 [Serializable]
 public abstract class ComponentProvider : IInitializable {
-  [SerializeField] GameObject prefab;
-  [Inject] IDeactivatedGameObjectFactory factory;
+  [SerializeField]
+  GameObject prefab;
+
+  [Inject]
+  IDeactivatedGameObjectFactory factory;
+
   GameObject instance;
   Dictionary<Type, Component> components = new();
 
-  GameObject GetInstance() => instance ??= factory.Create(new PrefabContext { prefab = prefab });
+  GameObject GetInstance() {
+    return instance ??= factory.Create(new PrefabContext { prefab = prefab });
+  }
 
-  void Spawn() => instance = GetInstance();
+  void Spawn() {
+    instance = GetInstance();
+  }
 
   public T GetComponent<T>() where T : Component {
     if (!components.TryGetValue(typeof(T), out var component)) {

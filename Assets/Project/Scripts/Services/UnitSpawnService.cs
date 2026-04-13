@@ -7,9 +7,14 @@ using WhaleTee.MessagePipe.Message;
 using WhaleTee.Pooling;
 
 public class UnitSpawnService {
-  [Inject] ObjectPool objectPool;
-  [Inject] IPublisher<UnitSpawnedEventMessage> unitSpawnedEvent;
-  [Inject] UnitHexGridMovementService unitHexGridMovementService;
+  [Inject]
+  ObjectPool objectPool;
+
+  [Inject]
+  IPublisher<UnitSpawnedEventMessage> unitSpawnedEvent;
+
+  [Inject]
+  UnitHexGridMovementService unitHexGridMovementService;
 
   public void SpawnUnit(SquadUnit unit, Vector2 position) {
     unit.InjectDependencies();

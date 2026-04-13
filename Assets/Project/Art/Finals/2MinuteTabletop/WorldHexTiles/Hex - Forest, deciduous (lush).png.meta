@@ -1,0 +1,481 @@
+fileFormatVersion: 2
+guid: cde1cb47d1a3aa04ba5c6fae1021961c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2349044075133554492
+    second: Hex - Forest, deciduous (lush)_0
+  - first:
+      213: -5044721490064068947
+    second: Hex - Forest, deciduous (lush)_1
+  - first:
+      213: -9192251633379822011
+    second: Hex - Forest, deciduous (lush)_2
+  - first:
+      213: -7728606789964163019
+    second: Hex - Forest, deciduous (lush)_3
+  - first:
+      213: 5803130663158227005
+    second: Hex - Forest, deciduous (lush)_4
+  - first:
+      213: -6715806687153564701
+    second: Hex - Forest, deciduous (lush)_5
+  - first:
+      213: -6749601960258976481
+    second: Hex - Forest, deciduous (lush)_6
+  - first:
+      213: 1000227264122632772
+    second: Hex - Forest, deciduous (lush)_7
+  - first:
+      213: 8058857275611032508
+    second: Hex - Forest, deciduous (lush)_8
+  - first:
+      213: -3827915764003371921
+    second: Hex - Forest, deciduous (lush)_9
+  - first:
+      213: -1085937833585521984
+    second: Hex - Forest, deciduous (lush)_10
+  - first:
+      213: 8824820501478426081
+    second: Hex - Forest, deciduous (lush)_11
+  - first:
+      213: -8133685883943824966
+    second: Hex - Forest, deciduous (lush)_12
+  - first:
+      213: -7036170954724347900
+    second: Hex - Forest, deciduous (lush)_13
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 233
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Hex - Forest, deciduous (lush)_0
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 343
+        width: 34
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3f421cf32b799020800000000000000
+      internalID: 2349044075133554492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex - Forest, deciduous (lush)_1
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 349
+        width: 29
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: daea3f9688c8df9b0800000000000000
+      internalID: -5044721490064068947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex - Forest, deciduous (lush)_2
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 352
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 546346297df8e6080800000000000000
+      internalID: -9192251633379822011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex - Forest, deciduous (lush)_3
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 32
+        width: 332
+        height: 306
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 538938b82197eb490800000000000000
+      internalID: -7728606789964163019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex - Forest, deciduous (lush)_4
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 337
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3029b2879cd88050800000000000000
+      internalID: 5803130663158227005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex - Forest, deciduous (lush)_5
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 328
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e3d4006669acc2a0800000000000000
+      internalID: -6715806687153564701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex - Forest, deciduous (lush)_6
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 335
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f15cb7f27c89452a0800000000000000
+      internalID: -6749601960258976481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex - Forest, deciduous (lush)_7
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 337
+        width: 15
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44ab0b4b56581ed00800000000000000
+      internalID: 1000227264122632772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex - Forest, deciduous (lush)_8
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 67
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbb2e589effc6df60800000000000000
+      internalID: 8058857275611032508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex - Forest, deciduous (lush)_9
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 69
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f640670d4e280eac0800000000000000
+      internalID: -3827915764003371921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex - Forest, deciduous (lush)_10
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 51
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ca4afc3b49fde0f0800000000000000
+      internalID: -1085937833585521984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex - Forest, deciduous (lush)_11
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 46
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e5c43d7d7f087a70800000000000000
+      internalID: 8824820501478426081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex - Forest, deciduous (lush)_12
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 50
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab15bec58c75f1f80800000000000000
+      internalID: -8133685883943824966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hex - Forest, deciduous (lush)_13
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 29
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 400fbb0cbcf7a5e90800000000000000
+      internalID: -7036170954724347900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Hex - Forest, deciduous (lush)_0: 2349044075133554492
+      Hex - Forest, deciduous (lush)_1: -5044721490064068947
+      Hex - Forest, deciduous (lush)_10: -1085937833585521984
+      Hex - Forest, deciduous (lush)_11: 8824820501478426081
+      Hex - Forest, deciduous (lush)_12: -8133685883943824966
+      Hex - Forest, deciduous (lush)_13: -7036170954724347900
+      Hex - Forest, deciduous (lush)_2: -9192251633379822011
+      Hex - Forest, deciduous (lush)_3: -7728606789964163019
+      Hex - Forest, deciduous (lush)_4: 5803130663158227005
+      Hex - Forest, deciduous (lush)_5: -6715806687153564701
+      Hex - Forest, deciduous (lush)_6: -6749601960258976481
+      Hex - Forest, deciduous (lush)_7: 1000227264122632772
+      Hex - Forest, deciduous (lush)_8: 8058857275611032508
+      Hex - Forest, deciduous (lush)_9: -3827915764003371921
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

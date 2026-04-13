@@ -8,7 +8,8 @@ using WhaleTee.Reactive.Input;
 namespace TurnBasedTactics.Abilities {
   [Serializable]
   public class AdjacentCellsAbilityRule : IAbilityRule {
-    [Inject] HexGridNavigationService navigationService;
+    [Inject]
+    HexGridNavigationService navigationService;
 
     public bool CanApply(Ability ability, IEffectTarget target) {
       return navigationService.Distance(ability.owner.gameObject.GetComponent<UnitBehaviour>().CellPosition, target.CellPosition) == 1;

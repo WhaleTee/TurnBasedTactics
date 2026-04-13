@@ -6,10 +6,18 @@ using WhaleTee.Reactive.Input;
 namespace TurnBasedTactics.Abilities.Factory {
   [Serializable]
   public class PushEffectFactory : IEffectFactory {
-    [Inject] UserInput userInput;
-    [Inject] HexGridNavigationService navigationService;
-    [Inject] GroundTilemapToWorldPositionService tilemapToWorldService;
-    [Inject] UnitHexGridMovementService unitMovementService;
+    [Inject]
+    UserInput userInput;
+
+    [Inject]
+    HexGridNavigationService navigationService;
+
+    [Inject]
+    GroundTilemapToWorldPositionService tilemapToWorldService;
+
+    [Inject]
+    UnitHexGridMovementService unitMovementService;
+
     public int pushCells;
 
     public IEffect<IEffectTarget> Create() {

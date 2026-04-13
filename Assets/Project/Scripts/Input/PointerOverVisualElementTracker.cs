@@ -5,17 +5,21 @@ using R3;
 using Reflex.Attributes;
 using UnityEngine;
 using UnityEngine.UIElements;
-using WhaleTee.MessagePipe.Message;
 using WhaleTee.Reactive.Input;
 using ZLinq;
 using Screen = UnityEngine.Device.Screen;
 
 namespace WhaleTee.Input {
-
   public sealed class PointerOverVisualElementTracker : IPointerOverTracker<VisualElement>, IDisposable {
-    [Inject] readonly UserInput userInput;
-    [Inject] readonly IPublisher<PointerExitVisualElementEvent> exitVisualElementPublisher;
-    [Inject] readonly IPublisher<PointerEnterVisualElementEvent> enterVisualElementPublisher;
+    [Inject]
+    readonly UserInput userInput;
+
+    [Inject]
+    readonly IPublisher<PointerExitVisualElementEvent> exitVisualElementPublisher;
+
+    [Inject]
+    readonly IPublisher<PointerEnterVisualElementEvent> enterVisualElementPublisher;
+
     readonly HashSet<VisualElement> trackingElements = new();
     readonly IDisposable subscriptions;
     VisualElement pointerOverElement;
@@ -26,13 +30,14 @@ namespace WhaleTee.Input {
       subscriptions = userInput.PointerPosition.Subscribe(HandlePointerPosition);
     }
 
-    static bool IsElementEnabled(VisualElement element) => element.visible && element.resolvedStyle.display == DisplayStyle.Flex;
+    static bool IsElementEnabled(VisualElement element) {
+      return element.visible && element.resolvedStyle.display == DisplayStyle.Flex;
+    }
 
     void HandlePointerPosition(Vector2 position) {
-      if (pointerOverElement == null && IsPointerOverUI()) {
+      if (pointerOverElement == null && IsPointerOverUI())
         enterVisualElementPublisher.Publish(new PointerEnterVisualElementEvent(pointerOverElement));
-      }
-      
+
       if (pointerOverElement != null && !IsElementContainsPointer(pointerOverElement)) {
         exitVisualElementPublisher.Publish(new PointerExitVisualElementEvent(pointerOverElement));
         if (IsPointerOverUI()) enterVisualElementPublisher.Publish(new PointerEnterVisualElementEvent(pointerOverElement));
@@ -52,14 +57,24 @@ namespace WhaleTee.Input {
       return true;
     }
 
-    public void Track(VisualElement element) => trackingElements.Add(element);
+    public void Track(VisualElement element) {
+      trackingElements.Add(element);
+    }
 
-    public void Untrack(VisualElement element) => trackingElements.Remove(element);
+    public void Untrack(VisualElement element) {
+      trackingElements.Remove(element);
+    }
 
-    public bool IsTracked(VisualElement element) => trackingElements.Contains(element) && IsElementEnabled(element);
+    public bool IsTracked(VisualElement element) {
+      return trackingElements.Contains(element) && IsElementEnabled(element);
+    }
 
-    public bool IsPointerOverUI() => trackingElements.AsValueEnumerable().Where(IsElementEnabled).Any(IsElementContainsPointer);
+    public bool IsPointerOverUI() {
+      return trackingElements.AsValueEnumerable().Where(IsElementEnabled).Any(IsElementContainsPointer);
+    }
 
-    public void Dispose() => subscriptions?.Dispose();
+    public void Dispose() {
+      subscriptions?.Dispose();
+    }
   }
 }

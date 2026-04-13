@@ -9,8 +9,12 @@ using WhaleTee.FSM;
 using WhaleTee.Reactive.Input;
 
 public sealed class WaitForAnyInputState : State {
-  [Inject] UserInput userInput;
-  [Inject] MainMenuUIContainer mainMenuUI;
+  [Inject]
+  UserInput userInput;
+
+  [Inject]
+  MainMenuUIContainer mainMenuUI;
+
   bool anyKeyPerformed;
   IDisposable subscription;
 

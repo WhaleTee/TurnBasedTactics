@@ -20,8 +20,10 @@ namespace WhaleTee.Pooling {
 
     Dictionary<GameObject, ObjectPool<GameObject>> objectPools;
     Dictionary<GameObject, GameObject> cloneToPrefabMap;
-    
-    public ObjectPool(IDeactivatedGameObjectFactory factory) => this.factory = factory;
+
+    public ObjectPool(IDeactivatedGameObjectFactory factory) {
+      this.factory = factory;
+    }
 
     void SetupEmpties() {
       emptyHolder = new GameObject("ObjectPools");
@@ -87,12 +89,7 @@ namespace WhaleTee.Pooling {
     }
 
     GameObject SetParentObject(PoolType poolType) {
-      return poolType switch {
-               PoolType.VFX => vfxEmpty,
-               PoolType.GameObjects => gameObjectsEmpty,
-               PoolType.SFX => sfxEmpty,
-               var _ => null
-             };
+      return poolType switch { PoolType.VFX => vfxEmpty, PoolType.GameObjects => gameObjectsEmpty, PoolType.SFX => sfxEmpty, var _ => null };
     }
 
     T SpawnObject<T>(
