@@ -3,7 +3,7 @@
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
 .utmp/
-/[Pp]ackages/
+/[Aa]ssets/[Pp]ackages/
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
@@ -120,4 +120,4 @@ InitTestScene*.unity*
 /[Aa]ssets/Plugins/PrimeTween/Demo/*
 
 # HotReload
-/[Aa]ssets/Packages/com.singularitygroup.hotreload
+/Packages/com.singularitygroup.hotreload
