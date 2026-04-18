@@ -33,7 +33,7 @@ namespace TurnBasedTactics.Abilities {
     }
 
     Vector3Int GetPushPosition(Vector3Int casterCellPosition, Vector3Int targetCellPosition, int force) {
-      var pointerPosition = userInput.GetPointerPositionWorld().AsVector2();
+      var pointerPosition = userInput.GetPointerPositionWorld().XY();
       var caster = tilemapToWorldService.GetWorldPosition(casterCellPosition);
       var target = tilemapToWorldService.GetWorldPosition(targetCellPosition);
       var direction = (target - caster).normalized;

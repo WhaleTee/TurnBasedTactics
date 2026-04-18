@@ -56,7 +56,7 @@ namespace WhaleTee.Extensions {
       return (camera.WorldToScreenPoint(position + worldDirection) - camera.WorldToScreenPoint(position)).normalized;
     }
 
-    public static Vector2 AsVector2(this Vector3 point) {
+    public static Vector2 XY(this Vector3 point) {
       return new Vector2(point.x, point.y);
     }
 

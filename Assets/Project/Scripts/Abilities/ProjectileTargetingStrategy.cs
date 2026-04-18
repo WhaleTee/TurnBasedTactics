@@ -42,7 +42,7 @@ namespace TurnBasedTactics.Abilities.Targeting {
       var subscriptionBuilder = Disposable.CreateBuilder();
 
       userInput.PointerWorldPosition
-               .Select(value => value.AsVector2())
+               .Select(value => value.XY())
                .Subscribe(value => HandlePointerPosition(value, ability))
                .AddTo(ref subscriptionBuilder);
 

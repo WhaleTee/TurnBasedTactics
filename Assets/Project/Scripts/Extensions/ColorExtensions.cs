@@ -1,5 +1,5 @@
 ﻿using System;
-using PrimeTween;
+using LitMotion;
 using UnityEngine;
 using UnityEngine.UIElements;
 

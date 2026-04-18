@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using LitMotion;
+using LitMotion.Extensions;
 using Reflex.Attributes;
 using TurnBasedTactics.Unit;
 using UnityEngine;
-using PrimeTween;
+using WhaleTee.Extensions;
 
 namespace WhaleTee.Grid {
   public class UnitHexGridMovementService {
@@ -21,17 +23,21 @@ namespace WhaleTee.Grid {
 
       unit.state.movement.isMoving = true;
 
+      var unitTransform = unit.state.gameObject.transform;
+      var unitPosition = unitTransform.position;
+
       foreach (var position in path) {
-        await Tween.LocalPosition(
-          unit.state.gameObject.transform,
-          tilemapToWorldPositionService.GetWorldPosition(position) + unit.configuration.position.cellOffset,
-          unit.configuration.movement.stepDuration,
-          Ease.Linear
-        );
+        var newUnitPosition = tilemapToWorldPositionService.GetWorldPosition(position) + unit.configuration.position.cellOffset;
+        var stepDuration = unit.configuration.movement.stepDuration;
+
+        await LMotion.Create(unitPosition.XY(), newUnitPosition, stepDuration)
+                     .WithEase(Ease.Linear)
+                     .BindToLocalPositionXY(unitTransform)
+                     .ToUniTask();
       }
 
       unit.state.movement.isMoving = false;
-      unit.state.position.cellPosition = tilemapToWorldPositionService.GetCellPosition(unit.state.gameObject.transform.position);
+      unit.state.position.cellPosition = tilemapToWorldPositionService.GetCellPosition(unitPosition);
     }
   }
 }
