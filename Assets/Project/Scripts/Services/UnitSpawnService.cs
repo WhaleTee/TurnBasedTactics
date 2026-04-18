@@ -25,6 +25,9 @@ public class UnitSpawnService {
     unitHexGridMovementService.SetPosition(unit, position);
     unitSpawnedEvent.Publish(new UnitSpawnedEventMessage { gameObject = gameObject });
     unit.state.movement.canMove = true;
-    foreach (var ability in unit.state.abilities) ability.owner = gameObject;
+
+    foreach (var ability in unit.state.abilities) {
+      ability.owner = gameObject;
+    }
   }
 }

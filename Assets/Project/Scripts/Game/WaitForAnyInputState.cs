@@ -1,38 +1,33 @@
 ﻿using System;
-using Cysharp.Threading.Tasks;
 using R3;
 using Reflex.Attributes;
-using Reflex.Extensions;
-using Reflex.Injectors;
-using UnityEngine.SceneManagement;
+using TurnBasedTactics.UI;
 using WhaleTee.FSM;
 using WhaleTee.Reactive.Input;
 
 public sealed class WaitForAnyInputState : State {
   [Inject]
-  UserInput userInput;
+  readonly UserInput userInput;
 
   [Inject]
-  MainMenuUIContainer mainMenuUI;
+  readonly MainMenuUI mainMenuUI;
 
   bool anyKeyPerformed;
   IDisposable subscription;
 
-  public WaitForAnyInputState() {
-    AttributeInjector.Inject(this, SceneManager.GetActiveScene().GetSceneContainer());
-  }
-
   protected override Type GetTransition() {
-    return anyKeyPerformed ? typeof(MenuState) : null;
+    return anyKeyPerformed ? typeof(MainMenuState) : null;
   }
 
   protected override void OnEnter() {
-    subscription = userInput.AnyKey.Where(value => value)
-                            .Subscribe(_ => {
-                                         anyKeyPerformed = true;
-                                         UniTask.Void(mainMenuUI.GetComponent<MainMenuUI>().HidePressAnyKeyLabel);
-                                       }
-                            );
+    subscription = userInput.AnyKey.Where(isKeyPerformed => isKeyPerformed).Subscribe(_ => OnAnyKeyPerformed());
+  }
+
+  void OnAnyKeyPerformed() {
+    anyKeyPerformed = true;
+    mainMenuUI.HidePressAnyKeyLabel();
+    mainMenuUI.ShowGameNameLabel();
+    
   }
 
   protected override void OnExit() {

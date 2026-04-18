@@ -33,16 +33,18 @@ namespace WhaleTee.Grid {
     }
 
     public void DrawReachablePositions(HashSet<Vector3Int> positions) {
-      foreach (var position in positions)
+      foreach (var position in positions) {
         navigationTilemapContainer.Tilemap.SetTile(
           new TileChangeData(position, navigationTilemapContainer.NavigationTile, Color.white, Matrix4x4.identity),
           false
         );
+      }
     }
 
     public void ClearReachablePositions(HashSet<Vector3Int> positions) {
-      foreach (var position in positions)
+      foreach (var position in positions) {
         navigationTilemapContainer.Tilemap.SetTile(new TileChangeData(position, null, Color.white, Matrix4x4.identity), false);
+      }
     }
 
     public void Dispose() {

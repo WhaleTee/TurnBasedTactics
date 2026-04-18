@@ -1,70 +1,71 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <ui:Template name="NewGamePanel" src="project://database/Assets/Project/UI/NewGameMenu.uxml?fileID=9197481963319205126&amp;guid=a09bf3fe05a1231458f891471296c884&amp;type=3#NewGameMenu" />
-    <Style src="project://database/Assets/Project/UI/Style/Main.uss?fileID=7433441132597879392&amp;guid=246245a2c5c74bc4bb3e0fe63eca19a7&amp;type=3#Main" />
+    <ui:Template name="NewGamePanel" src="project://database/Assets/Project/UI/NewGameMenu.uxml?fileID=9197481963319205126&amp;guid=a09bf3fe05a1231458f891471296c884&amp;type=3#NewGameMenu"/>
+    <Style src="project://database/Assets/Project/UI/Style/Main.uss?fileID=7433441132597879392&amp;guid=246245a2c5c74bc4bb3e0fe63eca19a7&amp;type=3"/>
     <ui:VisualElement name="Container" picking-mode="Ignore" style="flex-grow: 1; background-color: rgba(255, 255, 255, 0); -unity-background-image-tint-color: rgb(255, 255, 255);">
-        <ui:VisualElement name="Background" class="background" style="min-width: 1920px; min-height: 1080px;">
-            <ui:Label text="Press Any Key" name="PressAnyKeyLabel" style="position: absolute; top: 70%; bottom: auto; right: auto; left: 30%; width: 40%; height: 100px; color: rgb(255, 255, 255); font-size: 80px; -unity-text-align: middle-center; -unity-font-style: bold; transition-duration: 0.1s;" />
+        <ui:VisualElement name="Background" class="background background--hidden">
+            <ui:Label text="Press Any Key" name="PressAnyKeyLabel" class="press-any-key-label"/>
         </ui:VisualElement>
-        <ui:VisualElement name="V1" class="v1" style="max-height: 300%;">
+        <ui:VisualElement name="V1" class="v1">
             <ui:VisualElement name="H1" class="h1">
-                <ui:VisualElement name="GameNameLabel" style="flex-grow: 1; width: 1150px;" />
+                <ui:Label text=" Cool turn-based game " name="GameNameLabel" class="flex-grow--1 game-name-label--hidden"/>
             </ui:VisualElement>
-            <ui:VisualElement name="H2" class="h1" />
-            <ui:VisualElement name="H3" class="h1" />
+            <ui:VisualElement name="H2" class="h1"/>
+            <ui:VisualElement name="H3" class="h1"/>
         </ui:VisualElement>
-        <ui:VisualElement name="V2" class="v1" style="max-height: 382px;">
+        <ui:VisualElement name="V2" class="v1">
             <ui:VisualElement name="H1" class="h1">
-                <ui:VisualElement name="ButtonContainer" style="flex-grow: 1;">
+                <ui:VisualElement name="ButtonContainer" class="flex-grow--1 justify-content--center">
+                    <ui:Button name="Button" enabled="false" class="main-menu-button main-menu-button--hidden">
+                        <ui:VisualElement name="ButtonBackground" class="button-background"/>
+                        <ui:Label text="Continue" class="main-menu-button-label" style="height: 100%;"/>
+                    </ui:Button>
                     <ui:Button name="Button" class="main-menu-button main-menu-button--hidden">
-                        <ui:VisualElement name="ButtonBackground" class="button-background" />
-                        <ui:Label text="Continue" class="main-menu-button-label" style="height: 100%;" />
+                        <ui:VisualElement name="ButtonBackground" class="button-background"/>
+                        <ui:Label text="New Game" class="main-menu-button-label" style="height: 100%;"/>
                     </ui:Button>
-                    <ui:Button name="Button" parse-escape-sequences="true" class="main-menu-button main-menu-button--hidden">
-                        <ui:VisualElement name="ButtonBackground" class="button-background" />
-                        <ui:Label text="New Game" class="main-menu-button-label" style="height: 100%;" />
+                    <ui:Button name="Button" class="main-menu-button main-menu-button--hidden">
+                        <ui:VisualElement name="ButtonBackground" class="button-background"/>
+                        <ui:Label text="Options" class="main-menu-button-label" style="height: 100%;"/>
                     </ui:Button>
-                    <ui:Button name="Button" parse-escape-sequences="true" class="main-menu-button main-menu-button--hidden">
-                        <ui:VisualElement name="ButtonBackground" class="button-background" />
-                        <ui:Label text="Options" class="main-menu-button-label" style="height: 100%;" />
+                    <ui:Button name="Button" class="main-menu-button main-menu-button--hidden">
+                        <ui:VisualElement name="ButtonBackground" class="button-background"/>
+                        <ui:Label text="Credits" class="main-menu-button-label" style="height: 100%;"/>
                     </ui:Button>
-                    <ui:Button name="Button" parse-escape-sequences="true" class="main-menu-button main-menu-button--hidden">
-                        <ui:VisualElement name="ButtonBackground" class="button-background" />
-                        <ui:Label text="Credits" class="main-menu-button-label" style="height: 100%;" />
-                    </ui:Button>
-                    <ui:Button name="Button" parse-escape-sequences="true" class="main-menu-button main-menu-button--hidden">
-                        <ui:VisualElement name="ButtonBackground" class="button-background" />
-                        <ui:Label text="Quit" class="main-menu-button-label" style="height: 100%;" />
+                    <ui:Button name="Button" class="main-menu-button main-menu-button--hidden">
+                        <ui:VisualElement name="ButtonBackground" class="button-background"/>
+                        <ui:Label text="Quit" class="main-menu-button-label" style="height: 100%;"/>
                     </ui:Button>
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="H2" class="h1" />
-            <ui:VisualElement name="H3" class="h1" />
+            <ui:VisualElement name="H2" class="h1"/>
+            <ui:VisualElement name="H3" class="h1"/>
         </ui:VisualElement>
-        <ui:VisualElement name="V3" class="v1" style="max-height: 324px;">
+        <ui:VisualElement name="V3" class="v1">
             <ui:VisualElement name="H1" class="h1">
-                <ui:VisualElement name="ButtonContainer" style="flex-grow: 1; flex-direction: column-reverse;">
-                    <ui:VisualElement style="flex-grow: 0.1;" />
-                    <ui:Button name="Button" class="main-menu-button-s main-menu-button--hidden">
-                        <ui:VisualElement name="ButtonBackground" class="button-background" />
-                        <ui:Label text="Statistics" class="main-menu-button-label" style="height: 100%; font-size: 40px;" />
+                <ui:VisualElement name="ButtonContainer" class="flex-grow--1">
+                    <ui:VisualElement name="VisualElement" class="main-menu-button"/>
+                    <ui:VisualElement name="VisualElement" class="main-menu-button"/>
+                    <ui:Button name="Button" parse-escape-sequences="true" class="main-menu-button main-menu-button--hidden">
+                        <ui:VisualElement name="ButtonBackground" class="button-background"/>
+                        <ui:Label text="Profile: Alpha" class="main-menu-button-label" style="height: 100%;"/>
                     </ui:Button>
                     <ui:Button name="Button" parse-escape-sequences="true" class="main-menu-button-s main-menu-button--hidden">
-                        <ui:VisualElement name="ButtonBackground" class="button-background" />
-                        <ui:Label text="Achievements" class="main-menu-button-label" style="height: 100%; font-size: 40px;" />
+                        <ui:VisualElement name="ButtonBackground" class="button-background"/>
+                        <ui:Label text="Achievements" class="main-menu-button-label" style="height: 100%; font-size: 40px;"/>
                     </ui:Button>
-                    <ui:Button name="Button" parse-escape-sequences="true" class="main-menu-button main-menu-button--hidden">
-                        <ui:VisualElement name="ButtonBackground" class="button-background" />
-                        <ui:Label text="Profile: Alpha" class="main-menu-button-label" style="height: 100%;" />
+                    <ui:Button name="Button" class="main-menu-button-s main-menu-button--hidden">
+                        <ui:VisualElement name="ButtonBackground" class="button-background"/>
+                        <ui:Label text="Statistics" class="main-menu-button-label" style="height: 100%; font-size: 40px;"/>
                     </ui:Button>
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="H2" class="h1" style="flex-direction: column-reverse;">
-                <ui:Label text="(c) 2025 WhaleTee Games" name="Developer" style="font-size: 40px; -unity-text-align: upper-center; color: rgb(255, 255, 255);" />
+                <ui:Label text="(c) WhaleTee Games" name="Developer" style="font-size: 40px; -unity-text-align: upper-center; color: rgb(255, 255, 255);"/>
             </ui:VisualElement>
             <ui:VisualElement name="H3" class="h1" style="flex-direction: column-reverse;">
-                <ui:Label text="Build v. 0.0.1 (2025)" name="PlatformAndVersion" style="font-size: 40px; -unity-text-align: upper-center; color: rgb(255, 255, 255);" />
+                <ui:Label text="Build 0.0.1 (2025)" name="PlatformAndVersion" style="font-size: 40px; -unity-text-align: upper-center; color: rgb(255, 255, 255);"/>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:Instance template="NewGamePanel" name="NewGamePanel" style="position: absolute; width: 1920px; height: 1080px; visibility: hidden;" />
+        <ui:Instance template="NewGamePanel" name="NewGamePanel"/>
     </ui:VisualElement>
 </ui:UXML>

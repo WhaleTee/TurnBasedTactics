@@ -1,5 +1,5 @@
-﻿using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
+using ZLinq;
 using Object = UnityEngine.Object;
 
 namespace WhaleTee.Extensions {

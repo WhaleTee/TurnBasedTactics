@@ -58,8 +58,7 @@ namespace WhaleTee.FSM {
     }
   }
 
-  [Flags]
-  public enum StateLifecycle {
-    Enter = 0b01, Update = 0b10, FixedUpdate = 0b11, Exit = 0b100
+  public enum StateLifecycle : byte {
+    Enter = 1, Update, FixedUpdate, Exit
   }
 }

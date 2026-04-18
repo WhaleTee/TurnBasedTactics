@@ -41,7 +41,9 @@ namespace TurnBasedTactics.Abilities {
       targetingManager.ClearCurrentStrategy();
       if (target == null) return;
 
-      foreach (var effect in effects) effect.Create().Apply(this, target);
+      foreach (var effect in effects) {
+        effect.Create().Apply(this, target);
+      }
     }
   }
 }

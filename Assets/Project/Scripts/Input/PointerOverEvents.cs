@@ -1,8 +1,7 @@
 ﻿using UnityEngine.UIElements;
-using WhaleTee.MessagePipe.Message;
 
 namespace WhaleTee.Input {
-  public struct PointerEnterVisualElementEvent : IEventMessage {
+  public struct PointerEnterVisualElementEvent {
     public VisualElement element;
 
     public PointerEnterVisualElementEvent(VisualElement element) {
@@ -10,7 +9,7 @@ namespace WhaleTee.Input {
     }
   }
 
-  public struct PointerExitVisualElementEvent : IEventMessage {
+  public struct PointerExitVisualElementEvent {
     public VisualElement element;
 
     public PointerExitVisualElementEvent(VisualElement element) {

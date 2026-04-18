@@ -68,8 +68,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea429e1c7f1b467c9d14feda7ff00e97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuUI
-  menuAppearanceDelay: 2
-  buttonAppearanceDelay: 0.115
-  buttonFadeDelay: 0.015
-  backgroundAppearanceDelay: 0.1
-  labelFadeTime: 0.115
+  <MainMenuButtons>k__BackingField:
+    buttonAppearanceDelay: 0.115
+    buttonFadeDelay: 0.015

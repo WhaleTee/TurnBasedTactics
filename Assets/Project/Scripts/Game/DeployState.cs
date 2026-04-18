@@ -18,7 +18,7 @@ public sealed class DeployState : State {
   public DeployState() {
     stateMachine = StateMachine.StateMachineBuilder.Create()
                                .AddInitialState(new EnemyEmergeState())
-                               .AddState(new SquadDeploymentState().InjectAttributes())
+                               .AddState(new SquadDeploymentState())
                                .AddState(new EnemyMoveState())
                                .AddState(new SquadActionState())
                                .AddState(new EndTurnState())
@@ -96,7 +96,7 @@ public sealed class SquadDeploymentState : State {
   protected override void OnEnter() {
     for (var i = 0; i < squadDeployPositions.Length; i++) squadDeployPositions[i] = squad.deployInitialPoint;
 
-    unitDeployVisualization = new UnitDeployPositionsVisualization(reachablePositions).InjectAttributes();
+    unitDeployVisualization = new UnitDeployPositionsVisualization(reachablePositions).Inject();
 
     var bag = Disposable.CreateBuilder();
 
@@ -174,7 +174,9 @@ public sealed class SquadDeploymentState : State {
   }
 
   void ClearReachablePositions() {
-    foreach (var key in reachablePositions.AsValueEnumerable().Select(pair => pair.Key).ToArray()) reachablePositions.Remove(key);
+    foreach (var key in reachablePositions.AsValueEnumerable().Select(pair => pair.Key).ToArray()) {
+      reachablePositions.Remove(key);
+    }
 
     reachablePositions.Clear();
   }

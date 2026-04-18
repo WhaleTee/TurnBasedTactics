@@ -1,8 +1,7 @@
 ﻿using System;
-using WhaleTee.MessagePipe.Message;
 
 namespace WhaleTee.FSM {
-  public struct StateLifecycleChangedEvent : IEventMessage {
+  public struct StateLifecycleChangedEvent {
     public readonly Type state;
     public readonly byte lifecycleState;
 

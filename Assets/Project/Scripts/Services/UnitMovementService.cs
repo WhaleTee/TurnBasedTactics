@@ -125,7 +125,9 @@ namespace WhaleTee.Grid {
     }
 
     void ClearReachablePositions() {
-      foreach (var key in ReachablePositions.AsValueEnumerable().Select(pair => pair.Key).ToArray()) ReachablePositions.Remove(key);
+      foreach (var key in ReachablePositions.AsValueEnumerable().Select(pair => pair.Key).ToArray()) {
+        ReachablePositions.Remove(key);
+      }
 
       ReachablePositions.Clear();
     }
@@ -141,13 +143,17 @@ namespace WhaleTee.Grid {
         positions
       );
 
-      foreach (var position in positions) LastPath.Add(position);
+      foreach (var position in positions) {
+        LastPath.Add(position);
+      }
 
       ListPool<Vector3Int>.Release(positions);
     }
 
     void ClearPath() {
-      foreach (var position in LastPath.AsValueEnumerable().ToArray()) LastPath.Remove(position);
+      foreach (var position in LastPath.AsValueEnumerable().ToArray()) {
+        LastPath.Remove(position);
+      }
 
       LastPath.Clear();
     }

@@ -1,22 +1,22 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
+using Reflex.Attributes;
+using TurnBasedTactics.DI;
 using WhaleTee.FSM;
 
 namespace TurnBasedTactics.Abilities.Targeting {
-  public class TargetingManager : IStateObserver<GameplayState> {
+  public class TargetingManager : IStateUpdateObserver<GameplayState>, IInitializable, IDisposable {
+    [Inject]
+    readonly StateObserveManager stateObserveManager;
+
+    readonly CancellationTokenSource cts = new();
     TargetingStrategy currentStrategy;
 
-    public static TargetingManager instance;
-    CancellationTokenSource IStateObserver<GameplayState>.StateObserverTokenSource { get; } = new();
-
-    public TargetingManager() {
-      instance ??= this;
+    public void Initialize() {
+      stateObserveManager.RegisterStateUpdateObserver(this, cts.Token);
     }
 
-    ~TargetingManager() {
-      instance = null;
-    }
-
-    void IStateObserver<GameplayState>.OnUpdate() {
+    public void OnUpdate() {
       if (currentStrategy is { IsTargeting: true }) currentStrategy.Update();
     }
 
@@ -26,6 +26,11 @@ namespace TurnBasedTactics.Abilities.Targeting {
 
     public void ClearCurrentStrategy() {
       currentStrategy = null;
+    }
+
+    public void Dispose() {
+      cts?.Cancel();
+      cts?.Dispose();
     }
   }
 }

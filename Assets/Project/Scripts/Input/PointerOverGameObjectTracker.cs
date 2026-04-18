@@ -17,7 +17,7 @@ namespace WhaleTee.Input {
     readonly List<RaycastResult> raycastResults;
     readonly PointerEventData pointerEventData;
     readonly IDisposable subscriptions;
-    GameObject pointerOverGameObject;
+    GameObject gameObjectPointerOver;
 
     static EventSystem EventSystem => EventSystem.current;
 
@@ -26,7 +26,7 @@ namespace WhaleTee.Input {
       trackingGameObjects = new HashSet<GameObject>();
       pointerEventData = new PointerEventData(EventSystem);
       raycastResults = new List<RaycastResult>();
-      subscriptions = userInput.PointerPosition.Subscribe(_ => pointerOverGameObject = null);
+      subscriptions = userInput.PointerPosition.Subscribe(_ => gameObjectPointerOver = null);
     }
 
     static bool IsGameObjectEnabled(GameObject gameObject) {
@@ -35,19 +35,19 @@ namespace WhaleTee.Input {
 
     bool IsPointerOverGameObject() {
       if (userInput == null) return false;
-      if (pointerOverGameObject.OrNull() != null) return true;
+      if (gameObjectPointerOver.OrNull() != null) return true;
 
       pointerEventData.position = userInput.PointerPosition.Value;
 
       raycastResults.Clear();
       EventSystem.RaycastAll(pointerEventData, raycastResults);
 
-      pointerOverGameObject = raycastResults.AsValueEnumerable()
+      gameObjectPointerOver = raycastResults.AsValueEnumerable()
                                             .Select(result => result.gameObject)
                                             .Where(IsGameObjectEnabled)
                                             .FirstOrDefault(trackingGameObjects.Contains);
 
-      return pointerOverGameObject.OrNull() != null;
+      return gameObjectPointerOver.OrNull() != null;
     }
 
     public void Track(GameObject element) {
@@ -62,7 +62,7 @@ namespace WhaleTee.Input {
       return trackingGameObjects.Contains(element);
     }
 
-    public bool IsPointerOverUI() {
+    public bool IsPointerOver() {
       return IsPointerOverGameObject();
     }
 

@@ -1,52 +1,28 @@
-using System;
-using System.Threading;
-using Cysharp.Threading.Tasks;
-using TurnBasedTactics.Unit;
 using WhaleTee.FSM;
+using WhaleTee.Lifecycle;
+using TurnBasedTactics.DI;
+using WhaleTee.Reflex.Extensions;
 
-public class GameDriver : IInitializable, IDisposable {
-  StateMachine stateMachine;
-  StateMachine turnStateMachine;
-  SquadData squad;
-  IDisposable subscription;
-  CancellationTokenSource cts;
+namespace TurnBasedTactics.Game {
+  public class GameDriver : IInitializable, IUpdateable, IFixedUpdateable {
+    StateMachine stateMachine;
 
-  public void Initialize() {
-    cts = new CancellationTokenSource();
+    public void Initialize() {
+      stateMachine = StateMachine.StateMachineBuilder.Create()
+                                 .AddInitialState(new GameInitializationState().Inject())
+                                 .AddState(new WaitForAnyInputState().Inject())
+                                 .AddState(new MainMenuState().Inject())
+                                 .AddState(new DeployState())
+                                 .AddState(new GameplayState())
+                                 .Build();
+    }
 
-    stateMachine = StateMachine.StateMachineBuilder.Create()
-                               .AddInitialState(new GameInitializationState())
-                               .AddState(new WaitForAnyInputState())
-                               .AddState(new MenuState())
-                               .AddState(new DeployState())
-                               .AddState(new GameplayState())
-                               .Build();
-
-    UniTask.Void(Update);
-    UniTask.Void(FixedUpdate);
-  }
-
-  async UniTaskVoid Update() {
-    while (!cts.Token.IsCancellationRequested) {
+    public void Update() {
       stateMachine.Update();
-      // turnStateMachine.Update();
-      await UniTask.Yield(PlayerLoopTiming.LastUpdate, cts.Token, true);
     }
-  }
 
-  async UniTaskVoid FixedUpdate() {
-    while (!cts.Token.IsCancellationRequested) {
+    public void FixedUpdate() {
       stateMachine.FixedUpdate();
-      // turnStateMachine.FixedUpdate();
-      await UniTask.WaitForFixedUpdate(cts.Token, true);
     }
-  }
-
-  public void Dispose() {
-    cts?.Cancel();
-    cts?.Dispose();
-    subscription?.Dispose();
-    stateMachine?.Dispose();
-    // turnStateMachine?.Dispose();
   }
 }

@@ -3,6 +3,6 @@
     void Track(T ui);
     void Untrack(T ui);
     bool IsTracked(T ui);
-    bool IsPointerOverUI();
+    bool IsPointerOver();
   }
 }

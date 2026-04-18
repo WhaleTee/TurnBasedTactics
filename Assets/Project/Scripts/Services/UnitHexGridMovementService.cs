@@ -21,13 +21,14 @@ namespace WhaleTee.Grid {
 
       unit.state.movement.isMoving = true;
 
-      foreach (var position in path)
+      foreach (var position in path) {
         await Tween.LocalPosition(
           unit.state.gameObject.transform,
           tilemapToWorldPositionService.GetWorldPosition(position) + unit.configuration.position.cellOffset,
           unit.configuration.movement.stepDuration,
           Ease.Linear
         );
+      }
 
       unit.state.movement.isMoving = false;
       unit.state.position.cellPosition = tilemapToWorldPositionService.GetCellPosition(unit.state.gameObject.transform.position);

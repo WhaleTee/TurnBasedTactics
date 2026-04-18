@@ -1,0 +1,1 @@
+﻿namespace WhaleTee.MessagePipe.Key { }

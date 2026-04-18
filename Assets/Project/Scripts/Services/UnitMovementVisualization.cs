@@ -4,6 +4,7 @@ using System.Threading;
 using ObservableCollections;
 using R3;
 using Reflex.Attributes;
+using TurnBasedTactics.DI;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -48,16 +49,18 @@ namespace WhaleTee.Grid {
     }
 
     public void DrawReachablePositions(HashSet<Vector3Int> positions) {
-      foreach (var position in positions)
+      foreach (var position in positions) {
         navigationTilemapContainer.Tilemap.SetTile(
           new TileChangeData(position, navigationTilemapContainer.NavigationTile, Color.white, Matrix4x4.identity),
           false
         );
+      }
     }
 
     public void ClearReachablePositions(HashSet<Vector3Int> positions) {
-      foreach (var position in positions)
+      foreach (var position in positions) {
         navigationTilemapContainer.Tilemap.SetTile(new TileChangeData(position, null, Color.white, Matrix4x4.identity), false);
+      }
     }
 
     public void DrawPath(Vector3Int position) {

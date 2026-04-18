@@ -12,12 +12,13 @@ namespace WhaleTee.FSM {
   public sealed class StateMachine : IDisposable {
     readonly Dictionary<Type, State> states = new();
     readonly StateTransitionAction stateTransitionAction;
+
+    [Inject]
+    readonly IPublisher<StateLifecycleChangedEvent> stateLifecycleChangedEventPublisher;
+
     State current;
 
     public event Action<Type, Type> stateChangedEvent = delegate { };
-
-    [Inject]
-    readonly IPublisher<StateLifecycleChangedEvent> stateLifecycleEnteredEventPublisher;
 
     StateMachine() {
       stateTransitionAction = new StateTransitionAction(OnStateTransition);
@@ -27,7 +28,6 @@ namespace WhaleTee.FSM {
       if (states.TryGetValue(stateType, out var state)) {
         var oldState = current;
         ChangeState(state);
-
         stateChangedEvent.Invoke(oldState?.GetType(), current?.GetType());
       }
     }
@@ -48,15 +48,15 @@ namespace WhaleTee.FSM {
       var nextState = states[state.GetType()];
 
       previousState.Exit();
-      stateLifecycleEnteredEventPublisher.Publish(new StateLifecycleChangedEvent(previousState.GetType(), (byte)StateLifecycle.Exit));
+      stateLifecycleChangedEventPublisher.Publish(new StateLifecycleChangedEvent(previousState.GetType(), (byte)StateLifecycle.Exit));
       nextState?.Enter();
-      stateLifecycleEnteredEventPublisher.Publish(new StateLifecycleChangedEvent(nextState?.GetType(), (byte)StateLifecycle.Enter));
+      stateLifecycleChangedEventPublisher.Publish(new StateLifecycleChangedEvent(nextState?.GetType(), (byte)StateLifecycle.Enter));
       current = nextState;
     }
 
     public void Update() {
       current?.Update();
-      stateLifecycleEnteredEventPublisher.Publish(new StateLifecycleChangedEvent(current?.GetType(), (byte)StateLifecycle.Update));
+      stateLifecycleChangedEventPublisher.Publish(new StateLifecycleChangedEvent(current?.GetType(), (byte)StateLifecycle.Update));
     }
 
     public void FixedUpdate() {
@@ -112,7 +112,7 @@ namespace WhaleTee.FSM {
         }
 
         stateMachine.SetState(initialState);
-        return stateMachine.InjectAttributes();
+        return stateMachine.Inject();
       }
     }
   }

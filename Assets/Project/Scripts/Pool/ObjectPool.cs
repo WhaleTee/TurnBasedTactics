@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using WhaleTee.Factory;
+﻿using System.Collections.Generic;
+using TurnBasedTactics.DI;
 using UnityEngine;
 using UnityEngine.Pool;
+using WhaleTee.Factory;
+using ZLinq;
 using Object = UnityEngine.Object;
 
 namespace WhaleTee.Pooling {
@@ -12,34 +12,36 @@ namespace WhaleTee.Pooling {
   }
 
   public class ObjectPool : IInitializable {
-    readonly IDeactivatedGameObjectFactory factory;
-    GameObject emptyHolder;
-    GameObject gameObjectsEmpty;
-    GameObject sfxEmpty;
-    GameObject vfxEmpty;
+    readonly IDeactivatedGameObjectFactory objectFactory;
+    readonly Dictionary<GameObject, ObjectPool<GameObject>> objectPool = new();
+    readonly Dictionary<GameObject, GameObject> objectPrefab = new();
+    
+    GameObject poolsContainer;
+    GameObject gameObjectsContainer;
+    GameObject sfxContainer;
+    GameObject vfxContainer;
 
-    Dictionary<GameObject, ObjectPool<GameObject>> objectPools;
-    Dictionary<GameObject, GameObject> cloneToPrefabMap;
-
-    public ObjectPool(IDeactivatedGameObjectFactory factory) {
-      this.factory = factory;
+    public ObjectPool(IDeactivatedGameObjectFactory objectFactory) {
+      this.objectFactory = objectFactory;
     }
 
-    void SetupEmpties() {
-      emptyHolder = new GameObject("ObjectPools");
+    void SetupContainers() {
+      poolsContainer = new GameObject("Object Pools Container");
+      
+      var parentTransform = poolsContainer.transform;
 
-      gameObjectsEmpty = new GameObject("GameObjects");
-      gameObjectsEmpty.transform.SetParent(emptyHolder.transform);
+      gameObjectsContainer = new GameObject("GameObjects");
+      gameObjectsContainer.transform.SetParent(parentTransform);
 
-      sfxEmpty = new GameObject("SFX");
-      sfxEmpty.transform.SetParent(emptyHolder.transform);
+      sfxContainer = new GameObject("SFX");
+      sfxContainer.transform.SetParent(parentTransform);
 
-      vfxEmpty = new GameObject("VFX");
-      vfxEmpty.transform.SetParent(emptyHolder.transform);
+      vfxContainer = new GameObject("VFX");
+      vfxContainer.transform.SetParent(parentTransform);
 
-      Object.DontDestroyOnLoad(vfxEmpty.transform.root);
-      Object.DontDestroyOnLoad(gameObjectsEmpty.transform.root);
-      Object.DontDestroyOnLoad(sfxEmpty.transform.root);
+      Object.DontDestroyOnLoad(vfxContainer.transform.root);
+      Object.DontDestroyOnLoad(gameObjectsContainer.transform.root);
+      Object.DontDestroyOnLoad(sfxContainer.transform.root);
     }
 
     void OnGetObject(GameObject go) { }
@@ -50,64 +52,64 @@ namespace WhaleTee.Pooling {
     }
 
     void OnDestroyObject(GameObject go) {
-      cloneToPrefabMap.Remove(go);
+      objectPrefab.Remove(go);
       Object.Destroy(go);
     }
 
-    void CreatePool(GameObject prefab, Vector3 pos, Quaternion rot, PoolType poolType) {
+    void CreatePool(GameObject prefab, Vector3 position, Quaternion rotation, PoolType poolType) {
       var pool = new ObjectPool<GameObject>(
-        () => CreateObject(prefab, pos, rot, poolType),
+        () => CreateObject(prefab, position, rotation, poolType),
         OnGetObject,
         OnReleaseObject,
         OnDestroyObject
       );
 
-      objectPools.Add(prefab, pool);
+      objectPool.Add(prefab, pool);
     }
 
-    void CreatePool(GameObject prefab, Transform parent, Quaternion rot, PoolType poolType) {
+    void CreatePool(GameObject prefab, Transform parent, Quaternion rotation, PoolType poolType) {
       var pool = new ObjectPool<GameObject>(
-        () => CreateObject(prefab, parent, rot, poolType),
+        () => CreateObject(prefab, parent, rotation, poolType),
         OnGetObject,
         OnReleaseObject,
         OnDestroyObject
       );
 
-      objectPools.Add(prefab, pool);
+      objectPool.Add(prefab, pool);
     }
 
     GameObject CreateObject(GameObject prefab, Vector3 position, Quaternion rotation, PoolType poolType = PoolType.GameObjects) {
-      var parent = SetParentObject(poolType);
-      return factory.CreateDeactivated(prefab, position, rotation, parent.transform);
+      var parent = GetPoolContainer(poolType);
+      return objectFactory.CreateDeactivated(prefab, position, rotation, parent.transform);
     }
 
     GameObject CreateObject(GameObject prefab, Transform parent, Quaternion rotation, PoolType poolType = PoolType.GameObjects) {
-      var go = factory.CreateDeactivated(prefab, parent.transform, rotation);
-      var parentObject = SetParentObject(poolType);
+      var go = objectFactory.CreateDeactivated(prefab, parent.transform, rotation);
+      var parentObject = GetPoolContainer(poolType);
       go.transform.SetParent(parentObject.transform);
       return go;
     }
 
-    GameObject SetParentObject(PoolType poolType) {
-      return poolType switch { PoolType.VFX => vfxEmpty, PoolType.GameObjects => gameObjectsEmpty, PoolType.SFX => sfxEmpty, var _ => null };
+    GameObject GetPoolContainer(PoolType poolType) {
+      return poolType switch { PoolType.VFX => vfxContainer, PoolType.GameObjects => gameObjectsContainer, PoolType.SFX => sfxContainer, var _ => null };
     }
 
     T SpawnObject<T>(
-      GameObject objectToSpawn,
-      Vector3 spawnPos,
-      Quaternion spawnRotation,
+      GameObject prefab,
+      Vector3 position,
+      Quaternion rotation,
       PoolType poolType = PoolType.GameObjects
     ) where T : Object {
-      if (!objectPools.ContainsKey(objectToSpawn)) CreatePool(objectToSpawn, spawnPos, spawnRotation, poolType);
+      if (!objectPool.ContainsKey(prefab)) CreatePool(prefab, position, rotation, poolType);
 
-      var go = objectPools[objectToSpawn].Get();
+      var go = objectPool[prefab].Get();
 
       if (!go) return null;
 
-      cloneToPrefabMap.TryAdd(go, objectToSpawn);
+      objectPrefab.TryAdd(go, prefab);
 
-      go.transform.position = spawnPos;
-      go.transform.rotation = spawnRotation;
+      go.transform.position = position;
+      go.transform.rotation = rotation;
       go.SetActive(true);
 
       if (typeof(T) == typeof(GameObject)) return go as T;
@@ -116,99 +118,103 @@ namespace WhaleTee.Pooling {
 
       if (component) return component;
 
-      Debug.LogError($"Object {objectToSpawn.name} doesn't have component of type {typeof(T)}");
+      Debug.LogError($"Object {prefab.name} doesn't have component of type {typeof(T)}");
       return null;
     }
 
     T SpawnObject<T>(
-      GameObject objectToSpawn,
+      GameObject prefab,
       Transform parent,
-      Quaternion spawnRotation,
+      Quaternion rotation,
       PoolType poolType = PoolType.GameObjects
     ) where T : Object {
-      if (!objectPools.ContainsKey(objectToSpawn)) CreatePool(objectToSpawn, parent, spawnRotation, poolType);
+      if (!objectPool.ContainsKey(prefab)) CreatePool(prefab, parent, rotation, poolType);
 
-      var go = objectPools[objectToSpawn].Get();
+      var go = objectPool[prefab].Get();
 
       if (!go) return null;
 
-      cloneToPrefabMap.TryAdd(go, objectToSpawn);
+      objectPrefab.TryAdd(go, prefab);
 
       go.transform.SetParent(parent);
       go.transform.localPosition = Vector3.zero;
-      go.transform.localRotation = spawnRotation;
+      go.transform.localRotation = rotation;
       go.SetActive(true);
 
       var result = go as T;
 
       if (result) return result;
 
-      Debug.LogError($"Object {objectToSpawn.name} doesn't have component of type {typeof(T)}.");
+      Debug.LogError($"Object {prefab.name} doesn't have component of type {typeof(T)}.");
 
       return null;
     }
 
     public void Initialize() {
-      objectPools = new Dictionary<GameObject, ObjectPool<GameObject>>();
-      cloneToPrefabMap = new Dictionary<GameObject, GameObject>();
-      SetupEmpties();
+      SetupContainers();
     }
 
     public T SpawnObject<T>(
       T typePrefab,
-      Vector3 spawnPos,
-      Quaternion spawnRotation,
+      Vector3 position,
+      Quaternion rotation,
       PoolType poolType = PoolType.GameObjects
     ) where T : Component {
-      return SpawnObject<T>(typePrefab.gameObject, spawnPos, spawnRotation, poolType);
+      return SpawnObject<T>(typePrefab.gameObject, position, rotation, poolType);
     }
 
     public GameObject SpawnObject(
-      GameObject objectToSpawn,
-      Vector3 spawnPos,
-      Quaternion spawnRotation,
+      GameObject prefab,
+      Vector3 position,
+      Quaternion rotation,
       PoolType poolType = PoolType.GameObjects
     ) {
-      return SpawnObject<GameObject>(objectToSpawn, spawnPos, spawnRotation, poolType);
+      return SpawnObject<GameObject>(prefab, position, rotation, poolType);
     }
 
     public T SpawnObject<T>(
       T typePrefab,
       Transform parent,
-      Quaternion spawnRotation,
+      Quaternion rotation,
       PoolType poolType = PoolType.GameObjects
     ) where T : Component {
-      return SpawnObject<T>(typePrefab.gameObject, parent, spawnRotation, poolType);
+      return SpawnObject<T>(typePrefab.gameObject, parent, rotation, poolType);
     }
 
     public GameObject SpawnObject(
-      GameObject objectToSpawn,
+      GameObject prefab,
       Transform parent,
-      Quaternion spawnRotation,
+      Quaternion rotation,
       PoolType poolType = PoolType.GameObjects
     ) {
-      return SpawnObject<GameObject>(objectToSpawn, parent, spawnRotation, poolType);
+      return SpawnObject<GameObject>(prefab, parent, rotation, poolType);
     }
 
     public void ReturnObjectToPool(GameObject go, PoolType poolType = PoolType.GameObjects) {
-      if (cloneToPrefabMap.TryGetValue(go, out var prefab)) {
-        var parentObject = SetParentObject(poolType);
+      if (objectPrefab.TryGetValue(go, out var prefab)) {
+        var poolContainer = GetPoolContainer(poolType);
 
-        if (go.transform.parent != parentObject.transform) go.transform.SetParent(parentObject.transform);
-        if (objectPools.TryGetValue(prefab, out var pool)) pool.Release(go);
+        if (go.transform.parent != poolContainer.transform) go.transform.SetParent(poolContainer.transform);
+        if (objectPool.TryGetValue(prefab, out var pool)) pool.Release(go);
       } else Debug.LogWarning("Trying to return an object that is not pooled: " + go.name);
     }
 
     public void ReturnObjectsToPool(GameObject prefab, PoolType poolType = PoolType.GameObjects) {
-      var gos = cloneToPrefabMap
-                .Where(map => map.Value == prefab && map.Key.activeInHierarchy)
-                .Select(map => map.Key);
+      var gos = GetObjectsByPrefab(prefab);
 
       foreach (var go in gos) {
-        var parentObject = SetParentObject(poolType);
-        if (go.transform.parent != parentObject.transform) go.transform.SetParent(parentObject.transform);
-        if (objectPools.TryGetValue(prefab, out var pool)) pool.Release(go);
+        var poolContainer = GetPoolContainer(poolType);
+        if (go.transform.parent != poolContainer.transform) go.transform.SetParent(poolContainer.transform);
+        if (objectPool.TryGetValue(prefab, out var pool)) pool.Release(go);
       }
+    }
+
+    IEnumerable<GameObject> GetObjectsByPrefab(Object prefab) {
+      return objectPrefab
+             .Where(pair => pair.Value == prefab)
+             .Where(pair => pair.Key.activeInHierarchy)
+             .Select(map => map.Key)
+             .ToArray();
     }
   }
 }

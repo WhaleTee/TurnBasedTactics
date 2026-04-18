@@ -4,6 +4,8 @@
 #
 .utmp/
 /[Aa]ssets/[Pp]ackages/
+/[Pp]ackages/*
+!/[Pp]ackages/*.json
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
@@ -118,6 +120,3 @@ InitTestScene*.unity*
 # PrimeTween
 # Ignore Demo files
 /[Aa]ssets/Plugins/PrimeTween/Demo/*
-
-# HotReload
-/Packages/com.singularitygroup.hotreload

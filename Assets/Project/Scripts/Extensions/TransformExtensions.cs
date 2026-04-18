@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
+using ZLinq;
 using Object = UnityEngine.Object;
 
 namespace WhaleTee.Extensions {
@@ -12,7 +12,7 @@ namespace WhaleTee.Extensions {
     }
 
     public static IEnumerable<Transform> Children(this Transform parent) {
-      return parent.Cast<Transform>();
+      return parent.Cast<Transform>().ToArray();
     }
 
     public static void Reset(this Transform transform) {

@@ -35,12 +35,11 @@ namespace WhaleTee.Input {
     }
 
     void HandlePointerPosition(Vector2 position) {
-      if (pointerOverElement == null && IsPointerOverUI())
-        enterVisualElementPublisher.Publish(new PointerEnterVisualElementEvent(pointerOverElement));
+      if (pointerOverElement == null && IsPointerOver()) enterVisualElementPublisher.Publish(new PointerEnterVisualElementEvent(pointerOverElement));
 
       if (pointerOverElement != null && !IsElementContainsPointer(pointerOverElement)) {
         exitVisualElementPublisher.Publish(new PointerExitVisualElementEvent(pointerOverElement));
-        if (IsPointerOverUI()) enterVisualElementPublisher.Publish(new PointerEnterVisualElementEvent(pointerOverElement));
+        if (IsPointerOver()) enterVisualElementPublisher.Publish(new PointerEnterVisualElementEvent(pointerOverElement));
       }
     }
 
@@ -69,7 +68,7 @@ namespace WhaleTee.Input {
       return trackingElements.Contains(element) && IsElementEnabled(element);
     }
 
-    public bool IsPointerOverUI() {
+    public bool IsPointerOver() {
       return trackingElements.AsValueEnumerable().Where(IsElementEnabled).Any(IsElementContainsPointer);
     }
 

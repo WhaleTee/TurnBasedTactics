@@ -6,11 +6,11 @@ using UnityEngine.InputSystem.LowLevel;
 using WhaleTee.Comparers;
 using WhaleTee.Extensions;
 using WhaleTee.Input;
-using InputDevice = UnityEngine.InputSystem.InputDevice;
 
 namespace WhaleTee.Reactive.Input {
   public sealed class UserInput : IDisposable {
     const float EQUITY_TOLERANCE = 0.1f;
+    
     readonly InputActions inputActions;
     DisposableBag subscriptions;
 
@@ -48,8 +48,8 @@ namespace WhaleTee.Reactive.Input {
       Observable.EveryUpdate(UnityFrameProvider.EarlyUpdate)
                 .Subscribe(_ => {
                              LeftClick.Value = inputActions.UI.Click.IsPressed();
-                             RightClick.Value = inputActions.UI.RightClick.IsPressed() && inputActions.UI.RightClick.WasPressedThisFrame();
-                             MiddleClick.Value = inputActions.UI.MiddleClick.IsPressed() && inputActions.UI.MiddleClick.WasPressedThisFrame();
+                             RightClick.Value = inputActions.UI.RightClick.IsPressed();
+                             MiddleClick.Value = inputActions.UI.MiddleClick.IsPressed();
                            }
                 )
                 .AddTo(ref subscriptions);
